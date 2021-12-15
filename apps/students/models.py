@@ -41,6 +41,7 @@ class Student(models.Model):
     others = models.TextField(blank=True)
     passport = models.ImageField(blank=True, upload_to="students/passports/")
     state = models.ManyToManyField(State)
+    email =  models.EmailField(max_length=200)
 
     class Meta:
         ordering = ["surname", "firstname", "other_name"]
@@ -63,6 +64,8 @@ class Group(models.Model):
     group_mail =  models.EmailField(max_length=200)
     level= models.CharField(max_length=200)
     students = models.ManyToManyField(Student)
+    teachers = models.ManyToManyField('Teacher')
+
 
 #Session Class
 class Session(models.Model):
@@ -73,21 +76,54 @@ class Session(models.Model):
     goal = models.TextField(max_length=400)
     synopsis = models.TextField(max_length=400)
     logistics = models.TextField(max_length=400, blank=True)
-    module = models.ForeignKey('Module')
-
-    type_list = [('regular', 'Regular'), ('remedial','Remedial'),('support','Support'),('training','Training')]
-    gender = models.CharField(max_length=10, choices=type_list)
+    type_fields = [('regular', 'Regular'), ('remedial','Remedial'),('support','Support'),('training','Training')]
+    gender = models.CharField(max_length=60, choices=type_fields)
     records = models.ManyToManyField('Records')
 
 #Module Class
 class Module(models.Model):
     name =  models.CharField(max_length=200)
     sessions = models.ManyToManyField(Session)
-    supervisor = models.ForeignKey('Teacher')
-    teachers = models.ManyToManyField('Teacher')
+    supervisor = models.ForeignKey('Teacher', on_delete=models.CASCADE)
     group = models.ManyToManyField(Group)
 
 #Teachers Class
-class 
+class Teacher(models.Model):
+    name =  models.CharField(max_length=200)
+    first_name  =  models.CharField(max_length=200)
+    prof_mail =  models.EmailField(max_length=200)
+    perso_mail =  models.EmailField(max_length=200)
+    due = models.IntegerField()
+    picture = models.ImageField(upload_to='files/teachers/img')
+    modules = models.ManyToManyField(Module)
+
+
+#Assign class
+class Assign(models.Model):
+    title = models.CharField(max_length=200)
+    date_launch = models.DateField()
+    date_due = models.DateField()
+    nature = models.CharField(max_length=200)
+    desc = models.TextField(max_length=400)
+    assign_doc = blank = True
+    assign_sub = models.FileField(upload_to='files/assign/submission')
+    
+    state_fields = [('valid','Valid'),('NotValid','Not Valid')]
+    state = models.TextField(max_length = 60, choices = state_fields)
+    eva_grade = models.FloatField()
+    eva_comm = models.CharField(max_length=200)
+
+#Module Class
+class Records(models.Model):
+    name =  models.CharField(max_length=200, unique=True)
+    url = models.URLField(blank=True)
+    content = models.TextField(max_length=600)
+    
+    type_fields = [('valid','Valid'),('NotValid','Not Valid')]
+    type = models.TextField(max_length = 60, choices = type_fields)
+    group = models.ManyToManyField(Group)
+
+
+
 
 
