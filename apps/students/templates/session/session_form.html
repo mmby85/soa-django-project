@@ -28,3 +28,15 @@
 
 
 {% endblock content %}
+
+{% block morejs %}
+<script>
+  $("#id_h_start").attr("type", "time");
+  $("#id_h_end").attr("type", "time");id_is_online
+  $("#id_is_online").on("click", function(){
+    $("#id_room_number").toggle("disable");
+    $("#id_room_number").attr("value", "None")
+  });
+</script>
+
+{% endblock morejs %}

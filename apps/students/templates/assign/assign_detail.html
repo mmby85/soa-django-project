@@ -26,77 +26,74 @@
         <div>
           <div class="form-assign border-bottom row">
             <label class="col">
-              Starting Time
+              Title
             </label>
             <div class="col">
-              {{ object.h_start }}
+              {{ object.title }}
             </div>
           </div>
 
           <div class="form-assign border-bottom row">
             <label class="col">
-              Ending Time
+              Assinment Date
             </label>
             <div class="col">
-              {{ object.h_end}}
-            </div>
-          </div>
-          {% if  object.is_online %}
-          <div class="form-assign border-bottom row">
-            <label class="col">
-              Online
-            </label>
-            <div class="col">
-                Online               
-            </div>
-          </div>
-          {% else %}
-          <div class="form-assign border-bottom row">
-            <label class="col">
-              Room
-            </label>
-            <div class="col">
-              {{ object.room_number}}               
-            </div>
-          </div>
-
-          {% endif %}
-          <div class="form-assign border-bottom row">
-            <label class="col">
-              Goal
-            </label>
-            <div class="col">
-              {{ object.goal }}
+              {{ object.date_launch}}
             </div>
           </div>
 
           <div class="form-assign border-bottom row">
             <label class="col">
-              Synopsis
+              Due Date
             </label>
             <div class="col">
-              {{ object.synopsis }}
+              {{ object.date_due}}
             </div>
           </div>
 
           <div class="form-assign border-bottom row">
             <label class="col">
-              Logistics
+              Description
             </label>
             <div class="col">
-              {{ object.logistics }}
+              {{ object.desc }}
             </div>
           </div>
 
           <div class="form-assign border-bottom row">
             <label class="col">
-              Synopsis
+              Nature
             </label>
             <div class="col">
-              {{ object.synopsis }}
+              {{ object.nature }}
+            </div>
+          </div>
+
+          <div class="form-assign border-bottom row">
+            <label class="col">
+              State
+            </label>
+            <div class="col">
+              {{ object.state|capfirst }}
+            </div>
+          </div>
+
+          <div class="form-assign border-bottom row">
+            <label class="col">
+              Evaluation Grade
+            </label>
+            <div class="col">
+              {{ object.eva_grade }}
             </div>
           </div>          
-
+          <div class="form-assign border-bottom row">
+            <label class="col">
+              Evaluation Comment
+            </label>
+            <div class="col">
+              {{ object.eva_comm }}
+            </div>
+          </div> 
 
 
         </div>
