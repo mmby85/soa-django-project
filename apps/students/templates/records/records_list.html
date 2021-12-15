@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}records{% endblock title %}
+
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'records-create' %}"><i
+    class="fas fa-plus"></i> New record</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <div class="table-responsive">
+    <table id="recordstable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Starting Time</th>
+          <th>Ending Time</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for record in students %}
+          <tr class='clickable-row' data-href="{% url 'records-detail' record.id %}">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ record}}</td>
+            <td>{{ record.h_start}}</td>
+            <td>{{ record.h_end}}</td>
+
+          </tr>
+        {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#recordtable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}

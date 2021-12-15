@@ -35,5 +35,10 @@ urlpatterns = [
     path("assign/create/", AssignCreateView.as_view(), name="assign-create"),
     path("assign/<int:pk>/update/", AssignUpdateView.as_view(), name="assign-update"),
     path("assign/delete/<int:pk>/", AssignDeleteView.as_view(), name="assign-delete"),
+    path("records/list", RecordsListView.as_view(), name="records-list"),
+    path("records/<int:pk>/", RecordsDetailView.as_view(), name="records-detail"),
+    path("records/create/", RecordsCreateView.as_view(), name="records-create"),
+    path("records/<int:pk>/update/", RecordsUpdateView.as_view(), name="records-update"),
+    path("records/delete/<int:pk>/", RecordsDeleteView.as_view(), name="records-delete"),    
 
     ]

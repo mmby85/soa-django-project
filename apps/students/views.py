@@ -180,8 +180,6 @@ class SessionDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("session-list")
     template_name = "session/session_confirm_delete.html"
 
-
-
 #Manage Group Views
 class GroupListView(LoginRequiredMixin, ListView):
     model = Group
@@ -233,3 +231,30 @@ class AssignUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class AssignDeleteView(LoginRequiredMixin, DeleteView):
     model = Assign
     success_url = reverse_lazy("assign-list")
+
+#Manage Records Views
+class RecordsListView(LoginRequiredMixin, ListView):
+    model = Records
+    template_name = "records/records_list.html"
+    context_object_name = 'students'
+
+class RecordsDetailView(LoginRequiredMixin, DetailView):
+    model = Records
+    template_name = "records/records_detail.html"
+
+class RecordsCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Records
+    fields = "__all__"
+    success_message = "New record successfully added."
+    template_name = "records/records_form.html"
+
+class RecordsUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Records
+    fields = "__all__"
+    success_message = "Records successfully updated."
+    template_name = "records/records_form.html"
+
+class RecordsDeleteView(LoginRequiredMixin, DeleteView):
+    model = Records
+    success_url = reverse_lazy("records-list")
+    template_name = "records/records_confirm_delete.html"

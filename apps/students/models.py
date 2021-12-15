@@ -159,8 +159,8 @@ class Records(models.Model):
     name =  models.CharField(max_length=200, unique=True)
     url = models.URLField(blank=True)
     content = models.TextField(max_length=600)
-    
-    type_fields = [('valid','Valid'),('NotValid','Not Valid')]
+
+    type_fields = [('wmv','wmv'),('mov','mov'),('avi','avi') ,('mp4','mp4'),('ﬂv','ﬂv') ,]
     type = models.TextField(max_length = 60, choices = type_fields)
     group = models.ManyToManyField(Group, blank=True)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
@@ -169,7 +169,5 @@ class Records(models.Model):
         return f"{self.name} {self.id}"
 
     def get_absolute_url(self):
-        return reverse("record-detail", kwargs={"pk": self.pk})
-
-
-
+        return reverse("records-detail", kwargs={"pk": self.pk})
+        
