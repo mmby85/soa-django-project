@@ -25,5 +25,15 @@ urlpatterns = [
     path("session/create/", SessionCreateView.as_view(), name="session-create"),
     path("session/<int:pk>/update/", SessionUpdateView.as_view(), name="session-update"),
     path("session/delete/<int:pk>/", SessionDeleteView.as_view(), name="session-delete"),
-    
+    path("group/list", GroupListView.as_view(), name="group-list"),
+    path("group/<int:pk>/", GroupDetailView.as_view(), name="group-detail"),
+    path("group/create/", GroupCreateView.as_view(), name="group-create"),
+    path("group/<int:pk>/update/", GroupUpdateView.as_view(), name="group-update"),
+    path("group/delete/<int:pk>/", GroupDeleteView.as_view(), name="group-delete"),
+    path("assign/list", AssignListView.as_view(), name="assign-list"),
+    path("assign/<int:pk>/", AssignDetailView.as_view(), name="assign-detail"),
+    path("assign/create/", AssignCreateView.as_view(), name="assign-create"),
+    path("assign/<int:pk>/update/", AssignUpdateView.as_view(), name="assign-update"),
+    path("assign/delete/<int:pk>/", AssignDeleteView.as_view(), name="assign-delete"),
+
     ]

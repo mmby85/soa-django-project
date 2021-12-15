@@ -57,7 +57,7 @@ class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         )
         form.fields["address"].widget = widgets.Textarea(attrs={"rows": 2})
         form.fields["others"].widget = widgets.Textarea(attrs={"rows": 2})
-        # form.fields['passport'].widget = widgets.FileInput()
+        # form.fields['photo'].widget = widgets.FileInput()
         return form
 
 
@@ -117,6 +117,7 @@ class ModuleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Module
     fields = "__all__"
     success_message = "Record successfully updated."
+    template_name = "module/module_form.html"
 
 
 class ModuleDeleteView(LoginRequiredMixin, DeleteView):
@@ -172,7 +173,61 @@ class SessionUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Session
     fields = "__all__"
     success_message = "Record successfully updated."
+    template_name = "session/session_form.html"
 
 class SessionDeleteView(LoginRequiredMixin, DeleteView):
     model = Session
     success_url = reverse_lazy("session-list")
+
+
+#Manage Group Views
+class GroupListView(LoginRequiredMixin, ListView):
+    model = Group
+    template_name = "group/group_list.html"
+    context_object_name = 'students'
+
+class GroupDetailView(LoginRequiredMixin, DetailView):
+    model = Group
+    template_name = "group/group_detail.html"
+
+class GroupCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Group
+    fields = "__all__"
+    success_message = "New group successfully added."
+    template_name = "group/group_form.html"
+
+class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Group
+    fields = "__all__"
+    success_message = "Record successfully updated."
+    template_name = "group/group_form.html"
+
+class GroupDeleteView(LoginRequiredMixin, DeleteView):
+    model = Group
+    success_url = reverse_lazy("group-list")
+
+#Manage Assign Views
+class AssignListView(LoginRequiredMixin, ListView):
+    model = Assign
+    template_name = "assign/assign_list.html"
+    context_object_name = 'students'
+
+class AssignDetailView(LoginRequiredMixin, DetailView):
+    model = Assign
+    template_name = "assign/assign_detail.html"
+
+class AssignCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Assign
+    fields = "__all__"
+    success_message = "New assign successfully added."
+    template_name = "assign/assign_form.html"
+
+class AssignUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Assign
+    fields = "__all__"
+    success_message = "Record successfully updated."
+    template_name = "assign/assign_form.html"
+
+class AssignDeleteView(LoginRequiredMixin, DeleteView):
+    model = Assign
+    success_url = reverse_lazy("assign-list")

@@ -12,13 +12,10 @@
     <table id="teachertable" class="table table-bordered table-hover" data-page-length='100'>
       <thead class="thead-light">
         <tr>
-          <th>S/N</th>
+          <th>ID</th>
           <th>Fullname</th>
-          <th>Registration Number</th>
-          <th>Current Class</th>
-          <th>Gender</th>
-          <th>Mobile Phone Number</th>
-          <th>Status</th>
+          <th>Email</th>
+          <th>Due</th>
         </tr>
       </thead>
       <tbody>
@@ -26,12 +23,9 @@
         {% for teacher in students %}
           <tr class='clickable-row' data-href="{% url 'teacher-detail' teacher.id %}">
             <td>{{ forloop.counter}}</td>
-            <td>{{ teacher.name}} {{teacher.firstname }}</td>
-            <td>{{ teacher.registration_number}}</td>
-            <td>{{ teacher.current_class}}</td>
-            <td>{{ teacher.get_gender_display}}</td>
-            <td>{{ teacher.parent_mobile_number}}</td>
-            <td>{{ teacher.get_current_status_display}}</td>
+            <td>{{ teacher.name}} {{teacher.first_name }}</td>
+            <td>{{ teacher.prof_mail}}</td>
+            <td>{{ teacher.due}}</td>
           </tr>
         {% endfor %}
 

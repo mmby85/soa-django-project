@@ -22,6 +22,7 @@
   <link
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
     rel="stylesheet">
+    {% block head %} {% endblock head %}
 </head>
 
 <body
@@ -95,6 +96,7 @@
                 </p>
               </a>
             </li> -->
+            <br>
             <li class="nav-header">Dashboard</li>
             <li class="nav-item">
               <a href="{% url 'dashboard' %}" class="nav-link">
@@ -117,7 +119,7 @@
             </li>
             <li class="nav-item">
               <a href="{% url 'teacher-list' %}" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
+                <i class="nav-icon fas fa-user-tie"></i>
                 <p>
                   Manage Teachers
                 </p>
@@ -135,13 +137,13 @@
               <a href="{% url 'session-list' %}" class="nav-link">
                 <i class="nav-icon fas fa-book-open"></i>
                 <p>
-                  Manage Session
+                  Manage Sessions
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'view-results' %}" class="nav-link">
-                <i class="nav-icon fas fa-sitemap"></i>
+              <a href="{% url 'group-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
                   Manage Groups
                 </p>
@@ -149,15 +151,15 @@
             </li>
 
             <li class="nav-item">
-              <a href="{% url 'view-results' %}" class="nav-link">
-                <i class="nav-icon fas fa-atlassian"></i>
+              <a href="{% url 'assign-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-clipboard-check"></i>
                 <p>
                   Manage Assignments
                 </p>
               </a>
             </li>
 
-            <li class="nav-header">Others</li>
+            <!-- <li class="nav-header">Others</li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
@@ -209,7 +211,7 @@
                   Settings
                 </p>
               </a>
-            </li>
+            </li> -->
 
 
           </ul>

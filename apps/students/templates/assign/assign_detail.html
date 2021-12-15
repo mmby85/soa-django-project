@@ -5,10 +5,10 @@
 <div class="card-header">
   <div class="card-tools">
     <a href="#" class="btn btn-tool">Print</a>
-    <a href="{% url 'session-update' object.id %}" class="btn btn-tool">
+    <a href="{% url 'assign-update' object.id %}" class="btn btn-tool">
       <i class="fas fa-edit"></i>
     </a>
-    <a href="{% url 'session-delete' object.id %}" class="btn btn-tool">
+    <a href="{% url 'assign-delete' object.id %}" class="btn btn-tool">
       <i class="fas fa-times"></i>
     </a>
   </div>
@@ -24,7 +24,7 @@
       
       <div class="col-sm-8 ml-5">
         <div>
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Starting Time
             </label>
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Ending Time
             </label>
@@ -42,7 +42,7 @@
             </div>
           </div>
           {% if  object.is_online %}
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Online
             </label>
@@ -51,7 +51,7 @@
             </div>
           </div>
           {% else %}
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Room
             </label>
@@ -61,7 +61,7 @@
           </div>
 
           {% endif %}
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Goal
             </label>
@@ -70,7 +70,7 @@
             </div>
           </div>
 
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Synopsis
             </label>
@@ -79,7 +79,7 @@
             </div>
           </div>
 
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Logistics
             </label>
@@ -88,7 +88,7 @@
             </div>
           </div>
 
-          <div class="form-group border-bottom row">
+          <div class="form-assign border-bottom row">
             <label class="col">
               Synopsis
             </label>
@@ -118,7 +118,7 @@
         <tbody>
           {% for payment in payments %}
             <tr class='clickable-row' data-href="{% url 'invoice-detail' payment.id %}">
-              <td>{{payment.session}} - {{payment.term}} - {{ payment.class_for}}</td>
+              <td>{{payment.assign}} - {{payment.term}} - {{ payment.class_for}}</td>
               <td>{{payment.total_amount_payable}}</td>
               <td>{{payment.total_amount_paid}}</td>
               <td>{{payment.balance}}</td>

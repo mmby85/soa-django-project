@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Sessions{% endblock title %}
+{% block title %}groups{% endblock title %}
 
 {% block breadcrumb %}
-<a class="btn btn-primary" href="{% url 'session-create' %}"><i
-    class="fas fa-plus"></i> New session</a>
+<a class="btn btn-primary" href="{% url 'group-create' %}"><i
+    class="fas fa-plus"></i> New group</a>
 {% endblock breadcrumb %}
 
 {% block content %}
   <div class="table-responsive">
-    <table id="sessiontable" class="table table-bordered table-hover" data-page-length='100'>
+    <table id="grouptable" class="table table-bordered table-hover" data-page-length='100'>
       <thead class="thead-light">
         <tr>
           <th>ID</th>
@@ -20,12 +20,12 @@
       </thead>
       <tbody>
 
-        {% for session in students %}
-          <tr class='clickable-row' data-href="{% url 'session-detail' session.id %}">
+        {% for group in students %}
+          <tr class='clickable-row' data-href="{% url 'group-detail' group.id %}">
             <td>{{ forloop.counter}}</td>
-            <td>{{ session}}</td>
-            <td>{{ session.h_start}}</td>
-            <td>{{ session.h_end}}</td>
+            <td>{{ group}}</td>
+            <td>{{ group.h_start}}</td>
+            <td>{{ group.h_end}}</td>
 
           </tr>
         {% endfor %}
@@ -39,7 +39,7 @@
 
 {% block morejs %}
 <script>
-  $('#sessiontable').DataTable({
+  $('#grouptable').DataTable({
   });
 </script>
 

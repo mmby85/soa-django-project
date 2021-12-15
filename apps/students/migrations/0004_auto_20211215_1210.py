@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='student',
-            name='passport',
+            name='photo',
         ),
         migrations.AddField(
             model_name='assign',
