@@ -178,6 +178,8 @@ class SessionUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class SessionDeleteView(LoginRequiredMixin, DeleteView):
     model = Session
     success_url = reverse_lazy("session-list")
+    template_name = "session/session_confirm_delete.html"
+
 
 
 #Manage Group Views
