@@ -23,10 +23,10 @@ class StudentDetailView(LoginRequiredMixin, DetailView):
     model = Student
     template_name = "students/student_detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(StudentDetailView, self).get_context_data(**kwargs)
-        context["payments"] = Invoice.objects.filter(student=self.object)
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(StudentDetailView, self).get_context_data(**kwargs)
+    #     context["payments"] = Invoice.objects.filter(student=self.object)
+    #     return context
 
 
 class StudentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):

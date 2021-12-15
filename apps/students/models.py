@@ -40,7 +40,7 @@ class Student(models.Model):
     address = models.TextField(blank=True)
     others = models.TextField(blank=True)
     passport = models.ImageField(blank=True, upload_to="students/passports/")
-    state = models.ManyToManyField(State)
+    state = models.ManyToManyField(State, blank=True, null=True)
     email =  models.EmailField(max_length=200)
 
     class Meta:
