@@ -5,6 +5,11 @@ from django.utils import timezone
 
 from apps.corecode.models import StudentClass
 
+#State Class (Absence)
+class State(models.Model):
+    date = models.DateField()
+    motif = models.TextField(max_length=400,blank=True)
+    justif = models.FileField(max_length=400,blank=True, upload_to='students/justif')
 
 class Student(models.Model):
     STATUS_CHOICES = [("active", "Active"), ("inactive", "Inactive")]
@@ -35,6 +40,7 @@ class Student(models.Model):
     address = models.TextField(blank=True)
     others = models.TextField(blank=True)
     passport = models.ImageField(blank=True, upload_to="students/passports/")
+    state = models.ManyToManyField(State)
 
     class Meta:
         ordering = ["surname", "firstname", "other_name"]
@@ -49,3 +55,39 @@ class Student(models.Model):
 class StudentBulkUpload(models.Model):
     date_uploaded = models.DateTimeField(auto_now=True)
     csv_file = models.FileField(upload_to="students/bulkupload/")
+
+#Group Class
+class Group(models.Model):
+    name =  models.CharField(max_length=200)
+    nb_student = models.IntegerField()
+    group_mail =  models.EmailField(max_length=200)
+    level= models.CharField(max_length=200)
+    students = models.ManyToManyField(Student)
+
+#Session Class
+class Session(models.Model):
+    h_start = models.TimeField()
+    h_end = models.TimeField()
+    is_online = models.BooleanField(default=False)
+    room_number = models.IntegerField(blank=True)
+    goal = models.TextField(max_length=400)
+    synopsis = models.TextField(max_length=400)
+    logistics = models.TextField(max_length=400, blank=True)
+    module = models.ForeignKey('Module')
+
+    type_list = [('regular', 'Regular'), ('remedial','Remedial'),('support','Support'),('training','Training')]
+    gender = models.CharField(max_length=10, choices=type_list)
+    records = models.ManyToManyField('Records')
+
+#Module Class
+class Module(models.Model):
+    name =  models.CharField(max_length=200)
+    sessions = models.ManyToManyField(Session)
+    supervisor = models.ForeignKey('Teacher')
+    teachers = models.ManyToManyField('Teacher')
+    group = models.ManyToManyField(Group)
+
+#Teachers Class
+class 
+
+
