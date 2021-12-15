@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Modules{% endblock title %}
+
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'module-create' %}"><i
+    class="fas fa-plus"></i> New module</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <div class="table-responsive">
+    <table id="moduletable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 5%;">Id</th>
+          <th style="width: 45%;">Module Name</th>
+          <th style="width: 45%;">Superviser</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for module in students %}
+          <tr class='clickable-row' data-href="{% url 'module-detail' module.id %}">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ module.name}} </td>
+            <td>{{ module.supervisor.name}} {{ module.supervisor.first_name}} </td>
+
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#moduletable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}

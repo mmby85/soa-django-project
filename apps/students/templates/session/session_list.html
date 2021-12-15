@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Sessions{% endblock title %}
+
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'session-create' %}"><i
+    class="fas fa-plus"></i> New session</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+  <div class="table-responsive">
+    <table id="sessiontable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>S/N</th>
+          <th>Fullname</th>
+          <th>Registration Number</th>
+          <th>Current Class</th>
+          <th>Gender</th>
+          <th>Mobile Phone Number</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for session in students %}
+          <tr class='clickable-row' data-href="{% url 'session-detail' session.id %}">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ session.name}} {{session.firstname }}</td>
+            <td>{{ session.registration_number}}</td>
+            <td>{{ session.current_class}}</td>
+            <td>{{ session.get_gender_display}}</td>
+            <td>{{ session.parent_mobile_number}}</td>
+            <td>{{ session.get_current_status_display}}</td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#sessiontable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}

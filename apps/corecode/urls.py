@@ -20,10 +20,12 @@ from .views import (
     TermDeleteView,
     TermListView,
     TermUpdateView,
+    Dashboard,
 )
 
 urlpatterns = [
     path("", IndexView.as_view(), name="home"),
+    path("dashboard", Dashboard.as_view(), name="dashboard"),    
     path("site-config", SiteConfigView.as_view(), name="configs"),
     path(
         "current-session/", CurrentSessionAndTermView.as_view(), name="current-session"

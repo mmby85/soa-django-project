@@ -85,22 +85,6 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column"
             data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="{% url 'student-list' %}" class="nav-link">
-                <i class="nav-icon fas fa-graduation-cap"></i>
-                <p>
-                  Students
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'staff-list' %}" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                  Member of Staff
-                </p>
-              </a>
-            </li>
 
             <!-- <li class="nav-header">Finance</li>
             <li class="nav-item">
@@ -111,29 +95,64 @@
                 </p>
               </a>
             </li> -->
+            <li class="nav-header">Dashboard</li>
+            <li class="nav-item">
+              <a href="{% url 'dashboard' %}" class="nav-link">
+
+                <i class="nav-icon fas fa-chart-line"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
 
             <li class="nav-header">Management</li>
             <li class="nav-item">
-              <a href="{% url 'create-result' %}" class="nav-link">
-                <i class="nav-icon fas fa-money-bill-alt"></i>
+              <a href="{% url 'student-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-graduation-cap"></i>
                 <p>
-                  Create Results
+                  Manage Students
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'edit-results' %}" class="nav-link">
-                <i class="nav-icon fas fa-money-bill-alt"></i>
+              <a href="{% url 'teacher-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Update Results
+                  Manage Teachers
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'module-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Manage Modules
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'session-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                  Manage Session
                 </p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'view-results' %}" class="nav-link">
-                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <i class="nav-icon fas fa-sitemap"></i>
                 <p>
-                  View Results
+                  Manage Groups
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{% url 'view-results' %}" class="nav-link">
+                <i class="nav-icon fas fa-atlassian"></i>
+                <p>
+                  Manage Assignments
                 </p>
               </a>
             </li>
@@ -149,7 +168,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{% url 'sessions' %}" class="nav-link">
+                  <a href="{% url 'session-list' %}" class="nav-link">
                     <i class="nav-icon fas fa-bars"></i>
                     <p>
                       Sessions

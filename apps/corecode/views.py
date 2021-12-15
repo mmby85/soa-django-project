@@ -23,9 +23,11 @@ from .models import (
     Subject,
 )
 
+class Dashboard(LoginRequiredMixin, TemplateView):
+    template_name = "dashboard.html"
 
 class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = "index.html"
+    template_name = "dashboard.html"
 
 
 class SiteConfigView(LoginRequiredMixin, View):
