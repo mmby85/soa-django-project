@@ -123,6 +123,7 @@ class ModuleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class ModuleDeleteView(LoginRequiredMixin, DeleteView):
     model = Module
     success_url = reverse_lazy("module-list")
+    template_name = "module/module_confirm_delete.html"
 
 #Manage Teacher Views
 
@@ -205,6 +206,8 @@ class GroupUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class GroupDeleteView(LoginRequiredMixin, DeleteView):
     model = Group
     success_url = reverse_lazy("group-list")
+    template_name = "group/group_confirm_delete.html"
+    
 
 #Manage Assign Views
 class AssignListView(LoginRequiredMixin, ListView):
@@ -231,6 +234,8 @@ class AssignUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class AssignDeleteView(LoginRequiredMixin, DeleteView):
     model = Assign
     success_url = reverse_lazy("assign-list")
+    template_name = "assign/assign_confirm_delete.html"
+
 
 #Manage Records Views
 class RecordsListView(LoginRequiredMixin, ListView):
